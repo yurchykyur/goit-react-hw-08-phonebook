@@ -22,9 +22,12 @@ import {
   contactsOperations,
   contactsSelectors,
 } from 'components/redux/contacts';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import Layout from 'components/Layout';
 import Home from 'pages/Home';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
+import Contacts from 'pages/contacts';
 
 export default function App() {
   const contacts = useSelector(contactsSelectors.selectContacts);
@@ -37,9 +40,23 @@ export default function App() {
 
   return (
     <>
+      {/* <nav>
+        <Link to="/" end>
+          Home
+        </Link>
+        <Link to="/login">Login</Link>
+        <Link to="/regisration">Regisration</Link>
+        <Link to="/contacts">Contacts</Link>
+      </nav> */}
+
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/regisration" element={<Register />} />
+          <Route path="/contacts" element={<Contacts />} />
+
+          <Route path="*" element={<h1> 404 Not Found</h1>} />
         </Route>
       </Routes>
 
