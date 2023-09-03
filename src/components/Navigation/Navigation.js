@@ -1,7 +1,7 @@
 import { useAuth } from 'hooks';
 import { NavLink } from 'react-router-dom';
 
-export const Navigation = () => {
+const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
@@ -11,3 +11,5 @@ export const Navigation = () => {
     </nav>
   );
 };
+
+export default Navigation;
