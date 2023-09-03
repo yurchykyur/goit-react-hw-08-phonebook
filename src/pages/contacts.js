@@ -21,10 +21,13 @@ import {
   contactsSelectors,
 } from 'components/redux/contacts';
 
+import { useAuth } from 'hooks';
+
 export default function Contacts() {
   const contacts = useSelector(contactsSelectors.selectContacts);
   const isLoading = useSelector(contactsSelectors.selectIsLoading);
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(contactsOperations.fetchContacts());
@@ -35,36 +38,38 @@ export default function Contacts() {
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
-      <AppContainer>
-        <MainTitle>Phonebook</MainTitle>
-        <ContactForm />
-        <SecondTitle>Contacts</SecondTitle>
-        <Filter />
-        <ContactAmount></ContactAmount>
-        {contacts.length > 0 ? (
-          <ContactList />
-        ) : (
-          <Notification
-            message={'There are no contacts in your phonebook'}
-          ></Notification>
-        )}
-        {isLoading && (
-          <OvalWrapper>
-            <Oval
-              height={80}
-              width={80}
-              color="#534da9"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-              ariaLabel="oval-loading"
-              secondaryColor="#4fa94d"
-              strokeWidth={2}
-              strokeWidthSecondary={2}
-            />
-          </OvalWrapper>
-        )}
-      </AppContainer>
+      {!isRefreshing && (
+        <AppContainer>
+          <MainTitle>Phonebook</MainTitle>
+          <ContactForm />
+          <SecondTitle>Contacts</SecondTitle>
+          <Filter />
+          <ContactAmount></ContactAmount>
+          {contacts.length > 0 ? (
+            <ContactList />
+          ) : (
+            <Notification
+              message={'There are no contacts in your phonebook'}
+            ></Notification>
+          )}
+          {isLoading && (
+            <OvalWrapper>
+              <Oval
+                height={80}
+                width={80}
+                color="#534da9"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="oval-loading"
+                secondaryColor="#4fa94d"
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+              />
+            </OvalWrapper>
+          )}
+        </AppContainer>
+      )}
 
       {/* 
       <TaskEditor />

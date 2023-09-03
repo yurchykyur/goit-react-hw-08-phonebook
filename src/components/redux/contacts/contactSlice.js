@@ -46,7 +46,11 @@ export const contactSlice = createSlice({
       contactsOperations.fetchDeleteContacts.fulfilled,
       (state, action) => {
         toastifyMessage.toastSuccess('Contact deleted successfully');
-        return { ...state, items: [...action.payload], isLoading: false };
+        return {
+          ...state,
+          items: [...state.items.filter(elem => elem.id !== action.payload)],
+          isLoading: false,
+        };
       }
     );
     builder.addCase(
@@ -58,8 +62,11 @@ export const contactSlice = createSlice({
     builder.addCase(
       contactsOperations.fetchAddContacts.fulfilled,
       (state, action) => {
+        console.log(action.payload);
         toastifyMessage.toastSuccess('Contact added successfully');
-        return { ...state, items: [...action.payload], isLoading: false };
+        state.isLoading = false;
+        state.error = null;
+        state.items.push(action.payload);
       }
     );
     builder.addCase(
