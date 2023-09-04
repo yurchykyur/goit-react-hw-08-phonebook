@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { lazy, useEffect } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'components/Layout';
-import Home from 'pages/Home';
-import Login from 'pages/Login';
-import Register from 'pages/Register';
-import Contacts from 'pages/contacts';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'components/redux/auth/operations';
 import { useAuth } from 'hooks';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
+
+const HomePage = lazy(() => import('pages/Home'));
+const RegisterPage = lazy(() => import('pages/Register'));
+const LoginPage = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/contacts'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -26,12 +27,12 @@ export default function App() {
         <>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
+              <Route index element={<HomePage />} />
               <Route
                 path="/login"
                 element={
                   <RestrictedRoute
-                    component={<Login />}
+                    component={<LoginPage />}
                     redirectTo="/contacts"
                   />
                 }
@@ -40,7 +41,7 @@ export default function App() {
                 path="/regisration"
                 element={
                   <RestrictedRoute
-                    component={<Register />}
+                    component={<RegisterPage />}
                     redirectTo="/contacts"
                   />
                 }
@@ -48,7 +49,10 @@ export default function App() {
               <Route
                 path="/contacts"
                 element={
-                  <PrivateRoute component={<Contacts />} redirectTo="/login" />
+                  <PrivateRoute
+                    component={<ContactsPage />}
+                    redirectTo="/login"
+                  />
                 }
               />
 
