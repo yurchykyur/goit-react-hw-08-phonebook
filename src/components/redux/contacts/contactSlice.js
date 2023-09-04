@@ -62,7 +62,6 @@ export const contactSlice = createSlice({
     builder.addCase(
       contactsOperations.fetchAddContacts.fulfilled,
       (state, action) => {
-        console.log(action.payload);
         toastifyMessage.toastSuccess('Contact added successfully');
         state.isLoading = false;
         state.error = null;

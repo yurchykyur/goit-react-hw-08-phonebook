@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 function ButtonAppBar() {
   const { isLoggedIn } = useAuth();
@@ -20,8 +21,8 @@ function ButtonAppBar() {
             <Typography
               variant="h6"
               noWrap
-              component="a"
-              href="/goit-react-hw-08-phonebook"
+              component={RouterLink}
+              to="/"
               sx={{
                 mr: 2,
                 display: { xs: 'flex' },
