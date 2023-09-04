@@ -64,7 +64,7 @@ export const RegisterForm = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5" sx={{ mb: 1 }}>
-            Sign in
+            Sign up
           </Typography>
 
           <Formik
