@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 
-export const AuthNav = () => {
+const AuthNav = () => {
   return (
     <div>
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -25,3 +25,5 @@ export const AuthNav = () => {
     </div>
   );
 };
+
+export { AuthNav };

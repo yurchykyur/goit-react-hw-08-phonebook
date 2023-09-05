@@ -14,7 +14,6 @@ const Navigation = () => {
       >
         Home
       </Button>
-      {/* <NavLink to="/">Home</NavLink> */}
       {
         isLoggedIn && (
           <Button
@@ -25,7 +24,6 @@ const Navigation = () => {
             Contacts
           </Button>
         )
-        // <NavLink to="/contacts">Contacts</NavLink>
       }
     </>
   );

@@ -13,11 +13,12 @@ import '@fontsource/roboto/700.css';
 import './index.css';
 
 import { persistor, store } from 'components/redux/store';
+import { Spinner } from 'service';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={Spinner.spinnerOval()} persistor={persistor}>
         <BrowserRouter basename="/goit-react-hw-08-phonebook">
           <App />
         </BrowserRouter>
@@ -25,5 +26,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 );
-
-// basename="/goit-react-hw-08-phonebook"
