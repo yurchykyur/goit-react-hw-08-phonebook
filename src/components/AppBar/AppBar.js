@@ -23,16 +23,21 @@ function ButtonAppBar() {
               noWrap
               component={RouterLink}
               to="/"
-              sx={{
-                mr: 2,
-                display: { xs: 'flex' },
-                flexGrow: 1,
-                fontFamily: 'Roboto',
-                fontWeight: 700,
-                letterSpacing: '.15rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
+              sx={[
+                {
+                  '&:hover': { textDecoration: 'underline' },
+                },
+                {
+                  mr: 2,
+                  display: { xs: 'flex' },
+                  flexGrow: 1,
+                  fontFamily: 'Roboto',
+                  fontWeight: 700,
+                  letterSpacing: '.15rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                },
+              ]}
             >
               PHONEBOOK
             </Typography>
