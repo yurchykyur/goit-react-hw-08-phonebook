@@ -10,21 +10,35 @@ const Navigation = () => {
       <Button
         LinkComponent={NavLink}
         to="/"
-        sx={{ my: 2, color: 'white', display: 'block' }}
+        sx={[
+          {
+            '&:hover': {
+              color: 'red',
+              backgroundColor: 'white',
+            },
+          },
+          { my: 2, color: 'white', display: 'block' },
+        ]}
       >
         Home
       </Button>
-      {
-        isLoggedIn && (
-          <Button
-            LinkComponent={NavLink}
-            to="/contacts"
-            sx={{ my: 2, color: 'white', display: 'block' }}
-          >
-            Contacts
-          </Button>
-        )
-      }
+      {isLoggedIn && (
+        <Button
+          LinkComponent={NavLink}
+          to="/contacts"
+          sx={[
+            {
+              '&:hover': {
+                color: 'red',
+                backgroundColor: 'white',
+              },
+            },
+            { my: 2, color: 'white', display: 'block' },
+          ]}
+        >
+          Contacts
+        </Button>
+      )}
     </>
   );
 };

@@ -21,7 +21,15 @@ const UserMenu = () => {
         <Typography sx={{ mr: 2 }}>Welcome, {user?.name}</Typography>
         <Button
           to="/login"
-          sx={{ my: 2, color: 'white', display: 'block' }}
+          sx={[
+            {
+              '&:hover': {
+                color: 'red',
+                backgroundColor: 'white',
+              },
+            },
+            { my: 2, color: 'white', display: 'block' },
+          ]}
           onClick={() => dispatch(logOut())}
         >
           Logout

@@ -9,7 +9,15 @@ const AuthNav = () => {
           LinkComponent={NavLink}
           variant="outlined"
           to="/regisration"
-          sx={{ my: 2, color: 'white', display: 'block' }}
+          sx={[
+            {
+              '&:hover': {
+                color: 'red',
+                backgroundColor: 'white',
+              },
+            },
+            { my: 2, color: 'white', display: 'block' },
+          ]}
         >
           Register
         </Button>
@@ -17,7 +25,15 @@ const AuthNav = () => {
           LinkComponent={NavLink}
           variant="outlined"
           to="/login"
-          sx={{ my: 2, color: 'white', display: 'block' }}
+          sx={[
+            {
+              '&:hover': {
+                color: 'red',
+                backgroundColor: 'white',
+              },
+            },
+            { my: 2, color: 'white', display: 'block' },
+          ]}
         >
           Log In
         </Button>
