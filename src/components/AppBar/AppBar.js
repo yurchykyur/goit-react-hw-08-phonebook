@@ -37,7 +37,10 @@ function ButtonAppBar() {
               PHONEBOOK
             </Typography>
 
-            <Navigation />
+            <Box sx={{ flexGrow: 6, display: { xs: 'none', md: 'flex' } }}>
+              <Navigation />
+            </Box>
+
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </Toolbar>
         </Container>
